@@ -46,13 +46,15 @@ public class Health : MonoBehaviour
     void TakeDamage(){
         int damage = damageDealer.GetDamage();
         health = health - damage;
-        if(health == 0 && gameObject.tag == "Enemy"){
+        
+        if(health <= 0 && gameObject.tag == "Enemy"){
             
             scoreKeeper.ModifyScore(10);
             Destroy(gameObject);
             
         }
-        else if(health == 0 && gameObject.tag == "player" ){
+        else if(health <= 0 && gameObject.tag == "Player" ){
+            
             Destroy(gameObject);
             levelManager.LoadGameOver();
         }
